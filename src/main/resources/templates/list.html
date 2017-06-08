@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<title>사용자 등록</title>
+	<link href="/menu.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+	<div id="Header">
+		게시판
+	</div>
+	<div id="Menu">
+		<a href="list">목록보기</a><br/>
+		<a href="create">글 등록하기</a>
+	</div>
+	<div id="Content">
+		<table>
+			<caption>글 목록</caption>
+			<thead>
+				<tr>
+					<th>아이디</th>
+					<th>제목</th>
+					<th>보</th>
+					<th>수정</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-th-each="Post : ${postList}">
+					<td data-th-text="${Post.id}" />
+					<td data-th-text="${Post.subject}"></td>
+					<td><a href="" th:href="@{detail(id=${Post.id})}">보기</a></td>
+					<td><a href="" th:href="@{edit(id=${Post.id})}">수정</a></td>
+					<td><a href="" th:href="@{remove(id=${Post.id})}">삭제</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

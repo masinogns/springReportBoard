@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<title>사용자 등록</title>
+	<link href="/menu.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+	<div id="Header">
+		글 관리
+	</div>
+	<div id="Menu">
+		<a href="list">목록보기</a><br/>
+		<a href="create">글 등록하기</a>
+	</div>
+	<div id="Content">
+		<form th:action="@{/register}" th:object="${post}" method="Post">
+			<fieldset>
+				<legend>글 등록</legend>
+				<p>
+					<label>글 제목</label>
+					<input type="name" name="subject" th:field="*{subject}"/>
+				</p>
+				<p>
+					<label>글 내용</label>
+					<input type="name" name="content" th:field="*{content}"/>
+				</p>
+				<p>
+					<input type="submit" value="등록" />
+				</p>
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>
+
+<!--<form th:action="@{/registerProcessing}" th:object="${user}" method="post">-->
+	<!--<h2>회원가입</h2>-->
+
+	<!--<input type="text" name="email" th:field="*{email}" placeholder="이메일" required="required"/>-->
+	<!--<input type="password" name="password" th:field="*{password}" placeholder="암호" required="required"/>-->
+	<!--<input type="text" name="name" th:field="*{name}" placeholder="이름" required="required"/>-->
+	<!--<input type="submit" value="회원가입"/>-->
+<!--</form>-->
