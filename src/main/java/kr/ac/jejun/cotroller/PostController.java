@@ -15,6 +15,7 @@ import java.util.List;
  */
 
 @Controller
+@RequestMapping("/post")
 public class PostController {
     @Autowired
     private PostService postService;
@@ -23,44 +24,44 @@ public class PostController {
     public String list(ModelMap modelMap){
         List<Post> posts = postService.list();
         modelMap.addAttribute("postList", posts);
-        return "list";
+        return "/post/list";
     }
 
     @RequestMapping("remove")
     public String remove(int id){
         postService.remove(id);
-        return "redirect:list";
+        return "redirect:/post/list";
     }
 
     @RequestMapping("create")
     public String create(){
-        return "create";
+        return "/post/create";
     }
 
     @RequestMapping(value = "register", method = RequestMethod.POST)
     public String register(Post post){
         postService.create(post);
-        return "redirect:list";
+        return "redirect:/post/list";
     }
 
     @RequestMapping("edit")
     public String edit(int id, ModelMap modelMap){
         Post post = postService.get(id);
         modelMap.addAttribute("post", post);
-        return "edit";
+        return "/post/edit";
     }
 
     @RequestMapping("save")
     public String svae(Post post){
         postService.save(post);
-        return "redirect:list";
+        return "redirect:/post/list";
     }
 
     @RequestMapping("detail")
     public String detail(int id, ModelMap modelMap){
         Post post = postService.get(id);
         modelMap.addAttribute("post", post);
-        return "detail";
+        return "/post/detail";
     }
 
 }

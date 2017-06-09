@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+    <header th:fragment="navFragment">
+        <h1>네비게이션 영역입다</h1>
+        <div id="Header">
+            게시판
+        </div>
+        <div id="Menu">
+            <a href="/post/list">목록보기</a><br/>
+            <a href="/post/create">글 등록하기</a><br/>
+        </div>
+    </header>
+
+</body>
+</html>

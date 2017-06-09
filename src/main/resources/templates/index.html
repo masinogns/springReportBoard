@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default"
+      >
+<!--xmlns:sec="http://www.thymeleaf.org/extras/spring-security"-->
+<head>
+    <title>사용자 등록</title>
+    <link href="/menu.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+
+<div id="Content">
+    <div sec:authorize="${isAuthenticated()}">1111</div>
+    <div sec:authorize="isAnonymous()">2222</div>
+
+    <div sec:authorize="hasAuthority('ADMIN')">admin</div>
+    <div sec:authorize="hasRole('ROLE_USER')">USER</div>
+</div>
+</body>
+</html>
