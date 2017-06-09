@@ -50,7 +50,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/post/list").permitAll()
                 .antMatchers("/post/detail").permitAll()
-                .antMatchers("/post/**").hasRole("USER")
+                .antMatchers("/post/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/category/list").permitAll()
+                .antMatchers("/category/detail").permitAll()
+                .antMatchers("/category/**").permitAll()
                 .antMatchers("/**").permitAll();
         http.formLogin()
                 .loginPage("/login").permitAll();

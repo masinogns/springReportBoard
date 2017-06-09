@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout/default">
+<head>
+	<title>사용자 등록</title>
+	<link href="/menu.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+
+	<div id="Content">
+		<form action="save" method="Post">
+			<input type="hidden" name="id" th:value="${post.id}" />
+			<fieldset>
+				<legend>글 등록</legend>
+				<p>
+					<label>글 내용</label>
+					<input type="name" name="content" />
+				</p>
+				<p>
+					<input type="submit" value="등록" />
+				</p>
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>

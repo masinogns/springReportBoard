@@ -1,9 +1,6 @@
 package kr.ac.jejun.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.awt.*;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -18,6 +15,17 @@ public class Post {
     private String subject;
     private String content;
     private Date regdate;
+    @ManyToOne
+    @JoinColumn(name = "post_category_id")
+    private PostCategory postCategory;
+
+    public PostCategory getPostCategory() {
+        return postCategory;
+    }
+
+    public void setPostCategory(PostCategory postCategory) {
+        this.postCategory = postCategory;
+    }
 
     public int getId() {
         return id;
@@ -50,4 +58,5 @@ public class Post {
     public void setRegdate(Date regdate) {
         this.regdate = regdate;
     }
+
 }

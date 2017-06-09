@@ -1,6 +1,8 @@
 package kr.ac.jejun.service;
 
 import kr.ac.jejun.model.Post;
+import kr.ac.jejun.model.PostCategory;
+import kr.ac.jejun.model.User;
 
 import java.util.List;
 

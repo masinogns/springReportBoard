@@ -1,9 +1,9 @@
 package kr.ac.jejun.cotroller;
 
 
-import kr.ac.jejun.dao.AccountDao;
-import kr.ac.jejun.model.Account;
-import kr.ac.jejun.security.UserDetailsImpl;
+import kr.ac.jejun.dao.UserDao;
+import kr.ac.jejun.model.User;
+import kr.ac.jejun.security.UserDetailsService;
 import kr.ac.jejun.service.HelloMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -49,20 +49,20 @@ public class HomeContorller {
 
     //필요한 부분은 security 계층으로 옮겨줘야한다
     @Autowired
-    AccountDao accountRepository;
+    UserDao accountRepository;
 
     @Autowired
     PasswordEncoder passwordEncoder;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(Account account){
+    public String register(User user){
         //회원 정보를 데이터베이스에 저장
         // 암호화하는 부분
-        account.setPassword(passwordEncoder.encode(account.getPassword()));
-        accountRepository.save(account);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        accountRepository.save(user);
 
         //SecurityContextholder에서 Context를 받아 인증을 설정한다
-        UserDetailsImpl userDetails = new UserDetailsImpl(account);
+        UserDetailsService userDetails = new UserDetailsService(user);
         Authentication authentication =
                 new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -70,15 +70,15 @@ public class HomeContorller {
     }
 
     @RequestMapping("/getPrivateMessage")
-    @PreAuthorize("(#account.userid==principal.Username) or hasRole('ADMIN')")
-    public String authstring(Account account, Model model){
+    @PreAuthorize("(#user.userid==principal.Username) or hasRole('ADMIN')")
+    public String authstring(User user, Model model){
         model.addAttribute("msg", "당신은 관리자이거나 요청 파라미터랑 아이디가 같습니다");
         return "authorizedMessage";
     }
 
     @RequestMapping("/getUserMessage")
     @PreAuthorize("hasRole('USER')")
-    public String userMessage(Account account, Model model){
+    public String userMessage(User user, Model model){
         model.addAttribute("msg","당신은 유저입니다");
         return "authorizedMessage";
     }

@@ -2,10 +2,9 @@ package kr.ac.jejun.security;
 
 
 
-import kr.ac.jejun.model.Account;
+import kr.ac.jejun.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,7 +13,7 @@ import java.util.List;
 /**
  * Created by masinogns on 2017. 6. 7..
  */
-public class UserDetailsImpl extends User{
+public class UserDetailsService extends org.springframework.security.core.userdetails.User {
     private String nick;
 
     public String getNick() {
@@ -25,15 +24,15 @@ public class UserDetailsImpl extends User{
         this.nick = nick;
     }
 
-    public UserDetailsImpl(Account account){
-        super(account.getUserid(), account.getPassword(), authorities(account));
-        this.nick = account.getNick();
+    public UserDetailsService(User user){
+        super(user.getUserid(), user.getPassword(), authorities(user));
+        this.nick = user.getNick();
     }
 
-    private static Collection<? extends GrantedAuthority> authorities(Account account) {
+    private static Collection<? extends GrantedAuthority> authorities(User user) {
         List<GrantedAuthority> authorities = new ArrayList<>();
 
-        authorities.add(new SimpleGrantedAuthority(account.getRole()));
+        authorities.add(new SimpleGrantedAuthority(user.getRole()));
         return authorities;
     }
 }

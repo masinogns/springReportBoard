@@ -13,6 +13,15 @@
 
 
 <h1>유저 페이지</h1>
+
+    <!--<span sec:authentication="principal.userid">님!!</span>-->
+    <span sec:authentication="principal.nick"></span><span>님</span>
+    <div th:text="${#authentication.name}+'님'"></div>
+
+
+
+
+
     <form th:action="@{/logout}" method="post">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <input type="submit" value="로그아웃"/>

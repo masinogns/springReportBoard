@@ -1,0 +1,15 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+<head>
+    <title>사용자 등록</title>
+    <link href="/menu.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+
+<div id="Content">
+    아이디 : <h3 data-th-text="${post.id}"/>
+    제목 : <h3 data-th-text="${post.name}"/>
+</div>
+</body>
+</html>

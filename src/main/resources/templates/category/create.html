@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout/default">
+<head>
+	<title>사용자 등록</title>
+	<link href="/menu.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+	<div id="Content">
+		<form th:action="@{/category/register}" th:object="${postcategory}" method="Post">
+			<fieldset>
+				<legend>카테고리 등록</legend>
+				<p>
+					<label>카테고리 제목</label>
+					<input type="name" name="name" th:field="*{name}"/>
+				</p>
+				<p>
+					<input type="submit" value="등록" />
+				</p>
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>
+
+<!--<form th:action="@{/registerProcessing}" th:object="${user}" method="post">-->
+	<!--<h2>회원가입</h2>-->
+
+	<!--<input type="text" name="email" th:field="*{email}" placeholder="이메일" required="required"/>-->
+	<!--<input type="password" name="password" th:field="*{password}" placeholder="암호" required="required"/>-->
+	<!--<input type="text" name="name" th:field="*{name}" placeholder="이름" required="required"/>-->
+	<!--<input type="submit" value="회원가입"/>-->
+<!--</form>-->

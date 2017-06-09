@@ -13,9 +13,10 @@
 
 <div id="Content">
     <div sec:authorize="${isAuthenticated()}">1111</div>
-    <div sec:authorize="isAnonymous()">2222</div>
+    <div sec:authorize="isAuthenticated()">2222</div>
 
-    <div sec:authorize="hasAuthority('ADMIN')">admin</div>
+    <div sec:authorize="hasAuthority('ROLE_ADMIN')">admin</div>
+    <div sec:authorize="hasRole('ROLE_ADMIN')">admin is good</div>
     <div sec:authorize="hasRole('ROLE_USER')">USER</div>
 </div>
 </body>

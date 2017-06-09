@@ -1,18 +1,23 @@
 package kr.ac.jejun.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by masinogns on 2017. 6. 7..
  */
 @Entity
-public class Account {
+@Getter
+@Setter
+@ToString
+public class User {
     @Id
     @GeneratedValue
     private Long id;
@@ -24,13 +29,21 @@ public class Account {
     @NotEmpty(message = "*비밀번호를 입력해주세요")
     private String password;
 
-    //이 부분은 나중에 enum과 일대다로 빼든지하는 작업이 필요할 것으로 보인다고 한다
-    // 시큐리티 튜토리얼이라서 간단하게 작업하는 것을 명심
     private String role;
     private String nick;
 
-    public Account() {
+    public User() {
+
     }
+
+    public User(String userid, String password, String role, String nick) {
+        this.userid = userid;
+        this.password = password;
+        this.role = role;
+        this.nick = nick;
+    }
+
+
 
     public Long getId() {
         return id;
@@ -72,8 +85,4 @@ public class Account {
         this.nick = nick;
     }
 
-    @Override
-    public String toString() {
-        return "Account [id="+id+", userid="+userid+", password="+password+", role="+role+", nick="+nick+"]";
-    }
 }
