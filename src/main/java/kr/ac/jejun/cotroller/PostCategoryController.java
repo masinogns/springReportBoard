@@ -3,6 +3,7 @@ package kr.ac.jejun.cotroller;
 import kr.ac.jejun.model.Post;
 import kr.ac.jejun.model.PostCategory;
 import kr.ac.jejun.service.PostCategoryService;
+import kr.ac.jejun.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,6 +20,9 @@ import java.util.List;
 public class PostCategoryController {
     @Autowired
     PostCategoryService postCategoryService;
+
+    @Autowired
+    PostService postService;
 
     @RequestMapping("list")
     public String list(ModelMap modelMap){
@@ -59,8 +63,9 @@ public class PostCategoryController {
 
     @RequestMapping("detail")
     public String detail(int id, ModelMap modelMap){
-        PostCategory post = postCategoryService.get(id);
-        modelMap.addAttribute("post", post);
+        PostCategory postCategory = postCategoryService.get(id);
+        List<Post> posts = postService.postList(postCategory);
+        modelMap.addAttribute("postList", posts);
         return "/category/detail";
     }
 }

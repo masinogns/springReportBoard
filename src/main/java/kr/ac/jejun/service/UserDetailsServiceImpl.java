@@ -1,7 +1,7 @@
-package kr.ac.jejun.security;
+package kr.ac.jejun.service;
 
 
-import kr.ac.jejun.dao.UserDao;
+import kr.ac.jejun.repository.UserDao;
 import kr.ac.jejun.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

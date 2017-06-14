@@ -4,9 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by masinogns on 2017. 6. 9..
@@ -14,17 +12,29 @@ import javax.persistence.Id;
 @Entity
 @Getter@Setter
 @ToString
-public class Commnet {
+public class Comment {
 
     @Id
     @GeneratedValue
     private int id;
     private String content;
 
-    public Commnet() {
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
+
+    public Post getPost() {
+        return post;
     }
 
-    public Commnet(String content) {
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public Comment() {
+    }
+
+    public Comment(String content) {
         this.content = content;
     }
 

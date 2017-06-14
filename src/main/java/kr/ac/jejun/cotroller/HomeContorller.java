@@ -1,9 +1,9 @@
 package kr.ac.jejun.cotroller;
 
 
-import kr.ac.jejun.dao.UserDao;
+import kr.ac.jejun.repository.UserDao;
 import kr.ac.jejun.model.User;
-import kr.ac.jejun.security.UserDetailsService;
+import kr.ac.jejun.service.UserDetailsService;
 import kr.ac.jejun.service.HelloMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

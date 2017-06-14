@@ -30,7 +30,7 @@ public class PostController {
     @RequestMapping("remove")
     public String remove(int id){
         postService.remove(id);
-        return "redirect:/post/list";
+        return "redirect:/category/list";
     }
 
     @RequestMapping("create")
@@ -41,7 +41,7 @@ public class PostController {
     @RequestMapping(value = "register", method = RequestMethod.POST)
     public String register(Post post){
         postService.create(post);
-        return "redirect:/post/list";
+        return "redirect:/category/list";
     }
 
     @RequestMapping("edit")
@@ -54,7 +54,7 @@ public class PostController {
     @RequestMapping("save")
     public String svae(Post post){
         postService.save(post);
-        return "redirect:/post/list";
+        return "redirect:/category/list";
     }
 
     @RequestMapping("detail")

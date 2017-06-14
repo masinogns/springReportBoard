@@ -10,6 +10,7 @@
 		<form th:action="@{/post/register}" th:object="${post}" method="Post">
 			<fieldset>
 				<legend>글 등록</legend>
+
 				<p>
 					<label>글 제목</label>
 					<input type="name" name="subject" th:field="*{subject}"/>
@@ -19,6 +20,13 @@
 					<input type="name" name="content" th:field="*{content}"/>
 					<!--<textarea name="content" cols="50" rows="10" th:field="*{content}"/>-->
 				</p>
+
+				<p>
+					<label>카테고리</label>
+					<input type="name" name="postCategory" th:field="*{post_category}"/>
+					<!--<textarea name="content" cols="50" rows="10" th:field="*{content}"/>-->
+				</p>
+
 				<p>
 					<input type="submit" value="등록" />
 				</p>

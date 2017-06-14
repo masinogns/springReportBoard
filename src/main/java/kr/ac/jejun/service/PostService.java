@@ -12,6 +12,8 @@ import java.util.List;
 public interface PostService {
     List<Post> list();
 
+    List<Post> postList(PostCategory postCategory);
+
     void remove(int id);
 
     void create(Post post);

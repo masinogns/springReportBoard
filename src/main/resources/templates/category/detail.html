@@ -8,8 +8,25 @@
 <body>
 
 <div id="Content">
-    아이디 : <h3 data-th-text="${post.id}"/>
-    제목 : <h3 data-th-text="${post.name}"/>
+    <!--아이디 : <h3 data-th-text="${post.id}"/>-->
+    <!--제목 : <h3 data-th-text="${post.name}"/>-->
+    <table>
+        <caption>글 목록</caption>
+        <thead>
+        <tr>
+            <th>아이디</th>
+            <th>제목</th>
+            <th>보기</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-th-each="category : ${postList}">
+            <td data-th-text="${category.getId()}" />
+            <td data-th-text="${category.getSubject()}"></td>
+            <td><a href="" th:href="@{/post/detail(id=${category.getId()})}">보기</a></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

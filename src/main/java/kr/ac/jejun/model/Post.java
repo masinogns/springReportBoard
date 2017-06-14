@@ -16,7 +16,7 @@ public class Post {
     private String content;
     private Date regdate;
     @ManyToOne
-    @JoinColumn(name = "post_category_id")
+    @JoinColumn(name = "postcategory_id")
     private PostCategory postCategory;
 
     public PostCategory getPostCategory() {

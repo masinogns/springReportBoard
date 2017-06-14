@@ -22,9 +22,9 @@
 				<tr data-th-each="Post : ${postList}">
 					<td data-th-text="${Post.id}" />
 					<td data-th-text="${Post.name}"></td>
-					<td><a href="" th:href="@{detail(id=${Post.id})}">보기</a></td>
-					<td><a href="" th:href="@{edit(id=${Post.id})}">수정</a></td>
-					<td><a href="" th:href="@{remove(id=${Post.id})}">삭제</a></td>
+					<td><a href="" th:href="@{/post/detail(id=${Post.id})}">보기</a></td>
+					<td><a href="" th:href="@{/post/edit(id=${Post.id})}">수정</a></td>
+					<td><a href="" th:href="@{/post/remove(id=${Post.id})}">삭제</a></td>
 				</tr>
 			</tbody>
 		</table>

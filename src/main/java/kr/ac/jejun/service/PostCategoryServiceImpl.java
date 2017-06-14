@@ -1,7 +1,6 @@
 package kr.ac.jejun.service;
 
-import kr.ac.jejun.dao.PostCategoryDao;
-import kr.ac.jejun.model.Post;
+import kr.ac.jejun.repository.PostCategoryDao;
 import kr.ac.jejun.model.PostCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package kr.ac.jejun.dao;
+package kr.ac.jejun.repository;
 
 
 import kr.ac.jejun.model.User;
