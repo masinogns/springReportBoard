@@ -13,18 +13,18 @@
 
 				<p>
 					<label>글 제목</label>
-					<input type="name" name="subject" th:field="*{subject}"/>
+					<input type="name" name="subject" />
 				</p>
 				<p>
 					<label>글 내용</label>
-					<input type="name" name="content" th:field="*{content}"/>
-					<!--<textarea name="content" cols="50" rows="10" th:field="*{content}"/>-->
+					<textarea name="content" cols="50" rows="10"/>
+					<!--<input type="name" name="content" />-->
 				</p>
 
 				<p>
-					<label>카테고리</label>
-					<input type="name" name="postCategory" th:field="*{post_category}"/>
-					<!--<textarea name="content" cols="50" rows="10" th:field="*{content}"/>-->
+					<!--<label>카테고리</label>-->
+					<input type="hidden" name="postCategory" th:value="${category_id}"/>
+					<!--<textarea name="content" cols="50" th:value="${category_id}" rows="10" th:field="*{content}"/>-->
 				</p>
 
 				<p>

@@ -10,8 +10,10 @@
 <div id="Content">
     <!--아이디 : <h3 data-th-text="${post.id}"/>-->
     <!--제목 : <h3 data-th-text="${post.name}"/>-->
+
     <table>
-        <h2 th:text="${postCategory.getName()} +카테고리"></h2>
+        <!--<h2 th:text="${postCategory.getName()}+카테고리"></h2>-->
+        <a href="" th:href="@{/post/create(id=${postCategory.getId()})}">글 쓰기</a>
         <thead>
         <tr>
             <th>아이디</th>
