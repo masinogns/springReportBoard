@@ -65,6 +65,7 @@ public class PostCategoryController {
     public String detail(int id, ModelMap modelMap){
         PostCategory postCategory = postCategoryService.get(id);
         List<Post> posts = postService.postList(postCategory);
+        modelMap.addAttribute("postCategory", postCategory);
         modelMap.addAttribute("postList", posts);
         return "/category/detail";
     }

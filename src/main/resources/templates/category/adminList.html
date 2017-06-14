@@ -6,24 +6,25 @@
     <link href="/menu.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
-
 <div id="Content">
-    <!--아이디 : <h3 data-th-text="${post.id}"/>-->
-    <!--제목 : <h3 data-th-text="${post.name}"/>-->
     <table>
-        <h2 th:text="${postCategory.getName()} +카테고리"></h2>
+        <caption>카테고리</caption>
         <thead>
         <tr>
             <th>아이디</th>
             <th>제목</th>
             <th>보기</th>
+            <th>수정</th>
+            <th>삭제</th>
         </tr>
         </thead>
         <tbody>
-        <tr data-th-each="category : ${postList}">
-            <td data-th-text="${category.getId()}" />
-            <td data-th-text="${category.getSubject()}"></td>
-            <td><a href="" th:href="@{/post/detail(id=${category.getId()})}">보기</a></td>
+        <tr data-th-each="Post : ${postList}">
+            <td data-th-text="${Post.id}" />
+            <td data-th-text="${Post.name}"></td>
+            <td><a href="" th:href="@{/category/detail(id=${Post.id})}">보기</a></td>
+            <td><a href="" th:href="@{/category/edit(id=${Post.id})}">수정</a></td>
+            <td><a href="" th:href="@{/category/remove(id=${Post.id})}">삭제</a></td>
         </tr>
         </tbody>
     </table>
