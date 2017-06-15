@@ -10,13 +10,13 @@ import javax.persistence.*;
  * Created by masinogns on 2017. 6. 9..
  */
 @Entity
-@Getter@Setter
 @ToString
 public class Comment {
 
     @Id
     @GeneratedValue
     private int id;
+
     private String content;
 
     @ManyToOne

@@ -4,6 +4,7 @@ import kr.ac.jejun.model.Comment;
 import kr.ac.jejun.model.Post;
 import kr.ac.jejun.repository.CommentDao;
 import kr.ac.jejun.repository.PostDao;
+import kr.ac.jejun.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,23 +24,17 @@ public class CommentController {
     PostDao postDao;
 
     @Autowired
-    CommentDao commentDao;
+    CommentService commentService;
 
     @RequestMapping("create")
     public String create(){
         return "create";
     }
 
-    @RequestMapping(value = "/post/details", method = RequestMethod.POST)
-    public String postDetail(@RequestParam String id, Model model){
-        Post post = postDao.findOne(Integer.parseInt(id));
-        List<Comment> comments = commentDao.findByPost(post);
-
-        model.addAttribute("post", post);
-        model.addAttribute("replies", comments);
-
-        return "/post/detail";
-
+    @RequestMapping(value = "register", method = RequestMethod.POST)
+    public String register(Comment comment){
+        commentService.save(comment);
+        return "redirect:/post/detail/?id="+commentService.get(comment);
     }
 
 }

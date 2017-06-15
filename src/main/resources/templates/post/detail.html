@@ -9,47 +9,6 @@
 </head>
 <body>
 
-
-<script type="text/javascript">
-    var replyGroup= document.querySelector(".replyGroup");
-    var replyContent = document.querySelector(".replyContent");
-    console.log("run~");
-    $(function () {
-
-        $('.replyContent').on('keydown', function (event) {
-            if (event.which == 13) {
-                console.log("run");
-                var data = {};
-//                data["user_id"] = "[[${session.key}]]";
-                data["post_id"] = "[[${post.getId()}]]";
-                data["content"] = replyContent.value;
-                replyContent.value = "";
-                $.ajax({
-                    contentType: 'application/json',
-                    dataType: 'json',
-                    data: JSON.stringify(data),
-                    url: '/detail/commentAjax',
-                    type: 'POST',
-                    success: function (response) {
-                        var liTag = document.createElement('li');
-                        var h3Tag = document.createElement('h3');
-                        var pContentTag = document.createElement('p');
-
-//                        h3Tag.innerHTML = "[[${session.id}]]";
-                        pContentTag.innerHTML = data['content'];
-
-//                        liTag.appendChild(h3Tag);
-                        liTag.appendChild(pContentTag);
-
-                        replyGroup.appendChild(liTag);
-
-                    },
-                }); //ajax end
-            }
-        })//event end
-    });//function end
-
-</script>
 <div id="Content">
     아이디 : <h3 data-th-text="${post.id}"/>
     제목 : <h3 data-th-text="${post.subject}"/>
@@ -57,12 +16,28 @@
 
 
 <div class="replyForm">
-    <input class="replyContent" type="text" name="reply"/>
+    <form th:action="@{/comment/register" th:object="${comment}" method="Post">
+        <fieldset>
+            <p>
+                <label>댓글</label>
+                <input type="name" name="content" />
+            </p>
+            <p>
+                <input type="hidden" name="post" th:value="${post.getId()}"/>
+            </p>
+            <p>
+                <input type="hidden" name="user" th:value="${user.getId()}"/>
+            </p>
+            <p>
+                <input type="submit" value="등록" />
+            </p>
+        </fieldset>
+    </form>
 
     <div>
         <ul class="replyGroup">
             <li th:each="reply : ${replies}">
-                <h3 th:text="${reply.getUser().getUserId()}"></h3>
+                <h3 th:text="${reply.getUser().getUserid()}"></h3>
                 <p th:text="${reply.getContent()}">내용</p>
             </li>
         </ul>
@@ -72,5 +47,7 @@
 ttttt
 </div>
 </body>
+
+
 
 </html>
