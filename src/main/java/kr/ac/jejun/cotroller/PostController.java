@@ -1,6 +1,8 @@
 package kr.ac.jejun.cotroller;
 
 import kr.ac.jejun.model.Post;
+import kr.ac.jejun.model.User;
+import kr.ac.jejun.repository.UserDao;
 import kr.ac.jejun.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +23,13 @@ public class PostController {
     @Autowired
     private PostService postService;
 
+    @Autowired
+    private UserDao userDao;
+
     @RequestMapping({"/", "list"})
-    public String list(ModelMap modelMap){
-        List<Post> posts = postService.list();
+    public String list(String userid, ModelMap modelMap){
+        User user = userDao.findByUserid(userid);
+        List<Post> posts = postService.userList(user);
         modelMap.addAttribute("postList", posts);
         return "/post/list";
     }

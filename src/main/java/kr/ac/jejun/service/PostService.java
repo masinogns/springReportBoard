@@ -14,6 +14,8 @@ public interface PostService {
 
     List<Post> postList(PostCategory postCategory);
 
+    List<Post> userList(User user);
+
     void remove(int id);
 
     void create(Post post);
