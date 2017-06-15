@@ -15,7 +15,7 @@ public class SpringreportboardApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringreportboardApplication.class, args);
 	}
-
+/*
 	@Autowired
 	UserDao accountRepository;
 
@@ -42,5 +42,5 @@ public class SpringreportboardApplication {
 			user.setNick("백기훈");
 			accountRepository.save(user);
 		};
-	}
+	}*/
 }

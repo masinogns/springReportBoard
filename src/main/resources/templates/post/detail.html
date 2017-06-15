@@ -3,14 +3,52 @@
       layout:decorator="layout/default">
 <head>
     <title>사용자 등록</title>
+
     <link href="/menu.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
 
+
+<script type="text/javascript">
+    var replyGroup= document.querySelector(".replyGroup");
+    var replyContent = document.querySelector(".replyContent");
+    console.log("run~");
+    $(function () {
+
+        $('#replyContent').on('keydown', function (event) {
+            if (event.which == 13){
+                console.log("run");
+                var data = {
+
+                };
+            }
+        });
+        
+    });
+
+</script>
 <div id="Content">
     아이디 : <h3 data-th-text="${post.id}"/>
     제목 : <h3 data-th-text="${post.subject}"/>
     내용 : <h3 data-th-text="${post.content}"/>
+
+
+<div class="replyForm">
+    <input id="replyContent" type="text" name="reply"/>
+
+    <div>
+        <ul class="replyGroup">
+            <li th:each="reply : ${replies}">
+                <h3 th:text="${reply.getUser().getUserId()}"></h3>
+                <p th:text="${reply.getContent()}">내용</p>
+            </li>
+        </ul>
+    </div>
+
+</div>
+ttttt
 </div>
 </body>
+
 </html>
