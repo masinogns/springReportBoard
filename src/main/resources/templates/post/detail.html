@@ -16,16 +16,38 @@
     console.log("run~");
     $(function () {
 
-        $('#replyContent').on('keydown', function (event) {
-            if (event.which == 13){
+        $('.replyContent').on('keydown', function (event) {
+            if (event.which == 13) {
                 console.log("run");
-                var data = {
+                var data = {};
+//                data["user_id"] = "[[${session.key}]]";
+                data["post_id"] = "[[${post.getId()}]]";
+                data["content"] = replyContent.value;
+                replyContent.value = "";
+                $.ajax({
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    data: JSON.stringify(data),
+                    url: '/detail/commentAjax',
+                    type: 'POST',
+                    success: function (response) {
+                        var liTag = document.createElement('li');
+                        var h3Tag = document.createElement('h3');
+                        var pContentTag = document.createElement('p');
 
-                };
+//                        h3Tag.innerHTML = "[[${session.id}]]";
+                        pContentTag.innerHTML = data['content'];
+
+//                        liTag.appendChild(h3Tag);
+                        liTag.appendChild(pContentTag);
+
+                        replyGroup.appendChild(liTag);
+
+                    },
+                }); //ajax end
             }
-        });
-        
-    });
+        })//event end
+    });//function end
 
 </script>
 <div id="Content">
@@ -35,7 +57,7 @@
 
 
 <div class="replyForm">
-    <input id="replyContent" type="text" name="reply"/>
+    <input class="replyContent" type="text" name="reply"/>
 
     <div>
         <ul class="replyGroup">
