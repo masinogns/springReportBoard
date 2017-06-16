@@ -33,7 +33,7 @@ public class PostController {
 
     @RequestMapping({"/", "list"})
     public String list(String userid, ModelMap modelMap){
-        User user = userDao.findByUserid(userid);
+        User user = userDao.findMe();
         List<Post> posts = postService.userList(user);
         modelMap.addAttribute("postList", posts);
         return "/post/list";

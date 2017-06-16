@@ -16,5 +16,5 @@ import java.util.List;
 public interface PostDao extends CrudRepository<Post, Integer> {
     public List<Post> findByPostCategory(PostCategory postCategory);
     public List<Post> findByUser(User user);
-//    List<Post> findByUserid(String userid);
+//    List<Post> findByUserid(Long id);
 }
