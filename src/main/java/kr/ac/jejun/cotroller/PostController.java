@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -56,6 +58,8 @@ public class PostController {
 
     @RequestMapping(value = "register", method = RequestMethod.POST)
     public String register(Post post){
+        java.util.Date date = new java.util.Date();
+        post.setRegdate(date);
         postService.create(post);
         return "redirect:/category/list";
     }
