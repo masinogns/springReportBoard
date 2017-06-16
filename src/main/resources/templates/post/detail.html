@@ -39,6 +39,8 @@
             <li th:each="reply : ${replies}">
                 <h3 th:text="${reply.getUser().getUserid()}"></h3>
                 <p th:text="${reply.getContent()}">내용</p>
+                <p th:if = "${#authentication.name} == ${reply.getUser().getUserid()}">
+                <a href="" th:href="@{/comment/remove(id=${reply.id})}">삭제</a></p>
             </li>
         </ul>
     </div>

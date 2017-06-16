@@ -15,4 +15,5 @@ public interface UserDao extends JpaRepository<User, Long>{
 
     @Query("select a from User a where a.userid = ?#{ principal.Username }")
     User findMe();
+    
 }

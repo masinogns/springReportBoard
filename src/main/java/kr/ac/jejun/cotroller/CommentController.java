@@ -37,4 +37,10 @@ public class CommentController {
         return "redirect:/post/detail/?id="+commentService.get(comment);
     }
 
+    @RequestMapping("remove")
+    public String remove(int id){
+        commentService.remove(id);
+        return "redirect:/category/list";
+    }
+
 }

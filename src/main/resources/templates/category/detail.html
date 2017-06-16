@@ -31,6 +31,28 @@
         </tr>
         </tbody>
     </table>
+
+    <ul class="pager">
+        <li class="previous">
+            <a href="${category.number+1}">Newer Posts &rarr;</a>
+        </li>
+        <li class="next">
+            <a href="#">Older Posts &rarr;</a>
+        </li>
+    </ul>
+
+    <!--<ul class="pager">-->
+        <!--<c:if test="${!postPage.first}">-->
+            <!--<li class="previous">-->
+                <!--<a href="?page=${postPage.number-1}">&larr; Newer Posts</a>-->
+            <!--</li>-->
+        <!--</c:if>-->
+        <!--<c:if test="${!postPage.last}">-->
+            <!--<li class="next">-->
+                <!--<a href="?page=${postPage.number+1}">Older Posts &rarr;</a>-->
+            <!--</li>-->
+        <!--</c:if>-->
+    <!--</ul>-->
 </div>
 </body>
 </html>
