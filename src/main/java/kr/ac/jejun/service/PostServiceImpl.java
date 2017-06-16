@@ -31,6 +31,7 @@ public class PostServiceImpl implements PostService {
         return (List<Post>)postDao.findByUser(user);
     }
 
+
     @Override
     public void remove(int id) {
         postDao.delete(id);

@@ -47,7 +47,10 @@ public class PostController {
 
     @RequestMapping("create")
     public String create(int id, ModelMap modelMap){
+        User user = userDao.findMe();
+        Long userid = user.getId();
         modelMap.addAttribute("category_id", id);
+        modelMap.addAttribute("user", userid);
         return "/post/create";
     }
 
