@@ -10,15 +10,22 @@
 <div id="Content">
     <!--아이디 : <h3 data-th-text="${post.id}"/>-->
     <!--제목 : <h3 data-th-text="${post.name}"/>-->
+
     <table>
+<<<<<<< HEAD
         <h2 th:text="${postCategory.getName()} +카테고리"></h2>
         <a href="" th:href="@{/post/create(id='+ ${postCategory.getId()})}">글 등록하기</a><br/>
         <!--<a href="/post/create">글 등록하기</a><br/>-->
+=======
+        <!--<h2 th:text="${postCategory.getName()}+카테고리"></h2>-->
+        <a href="" th:href="@{/post/create(id=${postCategory.id})}">글 쓰기</a>
+>>>>>>> 56b024edbd3a1773258f1fbdf1c4fe905c0b271c
         <thead>
         <tr>
             <th>아이디</th>
             <th>제목</th>
             <th>보기</th>
+            <th>날짜</th>
         </tr>
         </thead>
         <tbody>
@@ -26,9 +33,32 @@
             <td data-th-text="${category.getId()}" />
             <td data-th-text="${category.getSubject()}"></td>
             <td><a href="" th:href="@{/post/detail(id=${category.getId()})}">보기</a></td>
+            <td data-th-text="${category.getRegdate()}"></td>
         </tr>
         </tbody>
     </table>
+
+    <ul class="pager">
+        <li class="previous">
+            <a href="${category.number+1}">Newer Posts &rarr;</a>
+        </li>
+        <li class="next">
+            <a href="#">Older Posts &rarr;</a>
+        </li>
+    </ul>
+
+    <!--<ul class="pager">-->
+        <!--<c:if test="${!postPage.first}">-->
+            <!--<li class="previous">-->
+                <!--<a href="?page=${postPage.number-1}">&larr; Newer Posts</a>-->
+            <!--</li>-->
+        <!--</c:if>-->
+        <!--<c:if test="${!postPage.last}">-->
+            <!--<li class="next">-->
+                <!--<a href="?page=${postPage.number+1}">Older Posts &rarr;</a>-->
+            <!--</li>-->
+        <!--</c:if>-->
+    <!--</ul>-->
 </div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
@@ -15,7 +16,7 @@
             <!--<a href="/post/list">목록보기</a><br/>-->
             <!--<a href="/post/create">글 등록하기</a><br/>-->
             <a href="/category/list">카테고리 목록보기</a><br/>
-            <a href="/category/create">카테고리 등록하기(admin만 가능)</a><br/>
+            <div sec:authorize="hasRole('ROLE_ADMIN')"><a href="/category/create">카테고리 등록하기(admin만 가능)</a><br/></div>
         </div>
     </header>
 

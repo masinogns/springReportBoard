@@ -3,7 +3,9 @@
       layout:decorator="layout/default">
 <head>
     <title>사용자 등록</title>
+
     <link href="/menu.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
 
@@ -11,6 +13,42 @@
     아이디 : <h3 data-th-text="${post.id}"/>
     제목 : <h3 data-th-text="${post.subject}"/>
     내용 : <h3 data-th-text="${post.content}"/>
+
+
+<div class="replyForm">
+    <form th:action="@{/comment/register }" th:object="${comment}" method="Post">
+        <fieldset>
+            <p>
+                <label>댓글</label>
+                <input type="name" name="content" />
+            </p>
+            <p>
+                <input type="hidden" name="post" th:value="${post.getId()}"/>
+            </p>
+            <p>
+                <input type="hidden" name="user" th:value="${user.getId()}"/>
+            </p>
+            <p>
+                <input type="submit" value="등록" />
+            </p>
+        </fieldset>
+    </form>
+
+    <div>
+        <ul class="replyGroup">
+            <li th:each="reply : ${replies}">
+                <h3 th:text="${reply.getUser().getUserid()}"></h3>
+                <p th:text="${reply.getContent()}">내용</p>
+                <p th:if = "${#authentication.name} == ${reply.getUser().getUserid()}">
+                <a href="" th:href="@{/comment/remove(id=${reply.id})}">삭제</a></p>
+            </li>
+        </ul>
+    </div>
+
+</div>
 </div>
 </body>
+
+
+
 </html>

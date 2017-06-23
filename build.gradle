@@ -31,7 +31,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.security:spring-security-data')
 	compile('org.springframework.boot:spring-boot-starter-web')
-
+	compile('org.webjars:jquery')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.security:spring-security-taglibs')
 	compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity4')

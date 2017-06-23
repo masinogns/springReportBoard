@@ -24,7 +24,7 @@ public class PostCategoryController {
     @Autowired
     PostService postService;
 
-    @RequestMapping("list")
+    @RequestMapping({"/", "list"})
     public String list(ModelMap modelMap){
         List<PostCategory> posts = postCategoryService.list();
         modelMap.addAttribute("postList", posts);

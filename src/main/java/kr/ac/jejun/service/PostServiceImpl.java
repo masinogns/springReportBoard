@@ -1,9 +1,11 @@
 package kr.ac.jejun.service;
 
 import kr.ac.jejun.model.PostCategory;
+import kr.ac.jejun.model.User;
 import kr.ac.jejun.repository.PostDao;
 import kr.ac.jejun.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -22,8 +24,15 @@ public class PostServiceImpl implements PostService {
     }
 
     public List<Post> postList(PostCategory category){
-        return (List<Post>)postDao.findByPostCategory(category);
+        PageRequest request = new PageRequest(0,5);
+        return (List<Post>)postDao.findByPostCategory(category, request);
     }
+
+    @Override
+    public List<Post> userList(User user) {
+        return (List<Post>)postDao.findByUser(user);
+    }
+
 
     @Override
     public void remove(int id) {

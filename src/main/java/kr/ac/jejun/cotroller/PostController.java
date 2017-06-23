@@ -1,6 +1,10 @@
 package kr.ac.jejun.cotroller;
 
+import kr.ac.jejun.model.Comment;
 import kr.ac.jejun.model.Post;
+import kr.ac.jejun.model.User;
+import kr.ac.jejun.repository.UserDao;
+import kr.ac.jejun.service.CommentService;
 import kr.ac.jejun.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -22,9 +28,16 @@ public class PostController {
     @Autowired
     private PostService postService;
 
+    @Autowired
+    private UserDao userDao;
+
+    @Autowired
+    private CommentService commentService;
+
     @RequestMapping({"/", "list"})
-    public String list(ModelMap modelMap){
-        List<Post> posts = postService.list();
+    public String list(String userid, ModelMap modelMap){
+        User user = userDao.findMe();
+        List<Post> posts = postService.userList(user);
         modelMap.addAttribute("postList", posts);
         return "/post/list";
     }
@@ -36,13 +49,23 @@ public class PostController {
     }
 
     @RequestMapping("create")
+<<<<<<< HEAD
     public String create(){
 //        modelMap.addAttribute("category_id", id);
+=======
+    public String create(int id, ModelMap modelMap){
+        User user = userDao.findMe();
+        Long userid = user.getId();
+        modelMap.addAttribute("category_id", id);
+        modelMap.addAttribute("user", userid);
+>>>>>>> 56b024edbd3a1773258f1fbdf1c4fe905c0b271c
         return "/post/create";
     }
 
     @RequestMapping(value = "register", method = RequestMethod.POST)
     public String register(Post post){
+        java.util.Date date = new java.util.Date();
+        post.setRegdate(date);
         postService.create(post);
         return "redirect:/category/list";
     }
@@ -61,9 +84,14 @@ public class PostController {
     }
 
     @RequestMapping("detail")
-    public String detail(int id, ModelMap modelMap){
+    public String detail(@RequestParam int id, ModelMap modelMap){
         Post post = postService.get(id);
+        User user = userDao.findMe();
+
+        List<Comment> comments = commentService.list(post);
         modelMap.addAttribute("post", post);
+        modelMap.addAttribute("user", user);
+        modelMap.addAttribute("replies", comments);
         return "/post/detail";
     }
 

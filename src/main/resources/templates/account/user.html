@@ -13,11 +13,12 @@
 
 
 <h1>유저 페이지</h1>
-
+    <a href="" th:href="@{/post/list(id=${#authentication.name})}">내 글 보기</a>
     <!--<span sec:authentication="principal.userid">님!!</span>-->
     <span sec:authentication="principal.nick"></span><span>님</span>
     <div th:text="${#authentication.name}+님"></div>
-
+    <!--밑에거를 키 값으로 userid이니까 보내면 된다-->
+    
 
 
 
