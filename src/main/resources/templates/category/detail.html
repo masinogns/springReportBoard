@@ -12,6 +12,8 @@
     <!--제목 : <h3 data-th-text="${post.name}"/>-->
     <table>
         <h2 th:text="${postCategory.getName()} +카테고리"></h2>
+        <a href="" th:href="@{/post/create(id='+ ${postCategory.getId()})}">글 등록하기</a><br/>
+        <!--<a href="/post/create">글 등록하기</a><br/>-->
         <thead>
         <tr>
             <th>아이디</th>

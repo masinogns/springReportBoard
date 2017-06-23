@@ -1,5 +1,6 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:form="http://www.w3.org/1999/xhtml"
 	  layout:decorator="layout/default">
 <head>
 	<title>사용자 등록</title>
@@ -18,13 +19,13 @@
 				<p>
 					<label>글 내용</label>
 					<input type="name" name="content" th:field="*{content}"/>
+					<!--<form:textarea path="content" rows="5" cols="30" />-->
 					<!--<textarea name="content" cols="50" rows="10" th:field="*{content}"/>-->
 				</p>
 
 				<p>
 					<label>카테고리</label>
 					<input type="name" name="postCategory" th:field="*{post_category}"/>
-					<!--<textarea name="content" cols="50" rows="10" th:field="*{content}"/>-->
 				</p>
 
 				<p>
@@ -32,6 +33,27 @@
 				</p>
 			</fieldset>
 		</form>
+
+		<!--<form:form method="POST" action="/post/register">-->
+			<!--<table>-->
+				<!--<tr>-->
+					<!--<td><form:label path="subject">글 제목</form:label></td>-->
+					<!--<td><form:input path="subject" /></td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td><form:label path="content">내용</form:label></td>-->
+					<!--<td><form:textarea path="content" rows="5" cols="30" /></td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td><form:hidden path="postCategory" rows="5" cols="30" /></td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td colspan="2">-->
+						<!--<input type="submit" value="Submit"/>-->
+					<!--</td>-->
+				<!--</tr>-->
+			<!--</table>-->
+		<!--</form:form>-->
 	</div>
 </body>
 </html>

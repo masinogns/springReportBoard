@@ -13,6 +13,7 @@ public class PostCategory {
     @Id
     @GeneratedValue
     private int id;
+    @Id
     private String name;
     @OneToMany(mappedBy = "postCategory")
     private List<Post> post;
