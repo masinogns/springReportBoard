@@ -49,16 +49,11 @@ public class PostController {
     }
 
     @RequestMapping("create")
-<<<<<<< HEAD
-    public String create(){
-//        modelMap.addAttribute("category_id", id);
-=======
     public String create(int id, ModelMap modelMap){
         User user = userDao.findMe();
         Long userid = user.getId();
         modelMap.addAttribute("category_id", id);
         modelMap.addAttribute("user", userid);
->>>>>>> 56b024edbd3a1773258f1fbdf1c4fe905c0b271c
         return "/post/create";
     }
 
@@ -94,5 +89,6 @@ public class PostController {
         modelMap.addAttribute("replies", comments);
         return "/post/detail";
     }
+    //// 안녕안녕
 
 }
